@@ -54,10 +54,6 @@ Sistem sekarang menggunakan algoritma MediaPipe (simulasi) melalui integrasi Pyt
 
 **Perbaikan Error Deteksi Palsu**: Sistem sekarang menggunakan deteksi brightness dasar - hanya mendeteksi tangan jika rata-rata brightness frame > 80, mencegah deteksi palsu pada kondisi gelap atau tanpa tangan.
 
-## Training Model (Python)
-
-Buka `training/hand_detection_training.ipynb` di Jupyter atau Kaggle untuk training model YOLOv8.
-
 ### Kebutuhan
 ```
 pip install opencv-python mediapipe numpy
