@@ -14,8 +14,6 @@ ProjectGrafika/
 │   └── DisplayHUD.java       ← Tampilan HUD
 ├── hand_tracking_mediapipe.py ← Script Python MediaPipe
 ├── requirements.txt          ← Python dependencies
-├── training/
-│   └── hand_detection_training.ipynb  ← Training YOLOv8
 ├── lib/
 │   └── opencv-4120.jar
 ├── out/                      ← Hasil compile
@@ -28,14 +26,9 @@ ProjectGrafika/
 ```cmd
 cd d:\ProjectGrafika
 
-REM Install Python dependencies
 pip install -r requirements.txt
 
-REM Compile
-javac -cp "lib\opencv-4120.jar" src\main\java\handtracking\*.java -d out
-
-REM Run (sesuaikan path DLL)
-java -cp "out;lib\opencv-4120.jar" -Djava.library.path="D:\OpenCV\opencv\build\java\x64" handtracking.Main
+build_run.bat
 ```
 
 Atau langsung jalankan `build_run.bat`.
@@ -67,11 +60,8 @@ Buka `training/hand_detection_training.ipynb` di Jupyter atau Kaggle untuk train
 
 ### Kebutuhan
 ```
-pip install ultralytics torch opencv-python matplotlib pandas
+pip install opencv-python mediapipe numpy
 ```
 
-### Dataset
-Gunakan dataset `hand-detection-dataset-vocyolo-format` dari Kaggle:
-https://www.kaggle.com/datasets/benenharrington/hand-detection-dataset
+download opencv from https://github.com/opencv/opencv/releases/download/4.12.0/opencv-4.12.0-windows.exe
 
-Letakkan di `training/dataset/hand-detection-dataset-vocyolo-format/`.
