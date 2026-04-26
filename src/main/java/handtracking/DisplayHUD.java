@@ -153,19 +153,24 @@ public class DisplayHUD {
     // ─────────────────────────────────────────────────────────────────────────
     private void drawContourOnFrame(Mat frame, HandAnalyzer.HandResult result) {
         if (result.boundingBox != null) {
+            // Mirror bounding box coordinates because frame sudah diflip horizontal
+            Rect mirroredBox = new Rect(
+                frameWidth - result.boundingBox.x - result.boundingBox.width,
+                result.boundingBox.y,
+                result.boundingBox.width,
+                result.boundingBox.height
+            );
+
             // Kotak pembatas tangan - HIJAU TEBAL ketika terdeteksi
-            Imgproc.rectangle(frame, result.boundingBox.tl(),
-                result.boundingBox.br(), new Scalar(0, 255, 0), 3);
+            Imgproc.rectangle(frame, mirroredBox.tl(), mirroredBox.br(), new Scalar(0, 255, 0), 3);
 
             // Lingkaran besar hijau di tengah bounding box sebagai indikator deteksi
             Point center = new Point(
-                result.boundingBox.x + result.boundingBox.width / 2,
-                result.boundingBox.y + result.boundingBox.height / 2
+                mirroredBox.x + mirroredBox.width / 2,
+                mirroredBox.y + mirroredBox.height / 2
             );
-            // Mirror untuk tampilan
-            Point mirroredCenter = new Point(frameWidth - 1 - center.x, center.y);
-            Imgproc.circle(frame, mirroredCenter, 25, new Scalar(0, 255, 0), 2);
-            putText(frame, "TANGAN", (int)mirroredCenter.x - 25, (int)mirroredCenter.y - 30,
+            Imgproc.circle(frame, center, 25, new Scalar(0, 255, 0), 2);
+            putText(frame, "TANGAN", (int)center.x - 25, (int)center.y - 30,
                     0.6, new Scalar(0, 255, 0), 2);
         }
 

@@ -23,7 +23,7 @@ echo Compilation successful! Running...
 
 REM Optimasi: gunakan JVM options untuk performa lebih baik
 java -Xms256m -Xmx512m -cp "out;lib\opencv-4120.jar" ^
-     -Djava.library.path="D:\Softwares\opencv\build\java\x64" ^
+     -Djava.library.path="D:\OPENCV\opencv\build\java\x64" ^
      handtracking.Main
 
 pause
